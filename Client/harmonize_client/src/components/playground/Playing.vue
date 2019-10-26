@@ -4,11 +4,11 @@
 
 <script>
 export default {
-  name: "Current",
+  name: "Playing",
 
   data() {
     return {
-      
+
     };
   }
 };
