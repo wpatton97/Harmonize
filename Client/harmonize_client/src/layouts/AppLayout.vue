@@ -2,11 +2,7 @@
   <q-layout view="hHh lpR fFf">
 
     <q-header class="bg-black text-white">
-      <q-toolbar>
-        <q-btn flat color="white" label="#weird" />
-        <q-btn flat color="white" label="#hiphop" />
-        <q-btn flat color="white" label="#pop" />
-      </q-toolbar>
+      <channel-selector />
     </q-header>
 
     <q-drawer show-if-above v-model="right" side="right" bordered>
@@ -21,8 +17,11 @@
 </template>
 
 <script>
+import ChannelSelector from '../components/ChannelSelector';
+
 export default {
   name: 'AppLayout',
+  components: { ChannelSelector },
   data () {
     return {
       leftDrawerOpen: false
