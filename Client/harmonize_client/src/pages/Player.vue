@@ -1,8 +1,9 @@
 <template>
   <q-page class="bg-black">
+    <channel-selector />
     <div class="background-image"></div>
     <div class="content">
-        
+        <current-player />
     </div>
   </q-page>
 </template>
@@ -27,6 +28,7 @@
 </style>
 
 <script>
+import ChannelSelector from '../components/ChannelSelector';
 import CurrentPlayer from '../components/playground/CurrentPlayer';
 import Visualizer from '../components/playground/Visualizer';
 import Voting from '../components/playground/Voting';
@@ -36,7 +38,8 @@ export default {
   components: {
     CurrentPlayer,
     Visualizer,
-    Voting
+    Voting,
+    ChannelSelector
   }
 }
 </script>
