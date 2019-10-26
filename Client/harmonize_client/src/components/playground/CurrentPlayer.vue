@@ -1,5 +1,5 @@
 <template>
-  <div>current player</div>
+  <div class="text-white">current player</div>
 </template>
 
 <script>

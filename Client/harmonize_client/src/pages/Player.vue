@@ -15,16 +15,19 @@
   right: 0;
   z-index: 1;
   display: block;
-  background-image: url('https://cdn.quasar.dev/img/mountains.jpg');
-  height: 800px;
-  filter: blur(20px);
+  background-image: url('http://localhost:8080/statics/lately-ep.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  filter: blur(20px)
+  opacity: 0.4;
 .content
   position: fixed;
   left: 0;
   right: 0;
   z-index: 9999;
-  margin-left: 20px;
-  margin-right: 20px;
+  top: 50%;
 </style>
 
 <script>
