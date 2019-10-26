@@ -1,10 +1,19 @@
 <template>
-  <q-toolbar>
-     <q-btn flat color="white" label="#weird" class="text-lowercase text-h5" />
-     <q-btn flat color="white" label="#hiphop" class="text-lowercase text-h6" />
-     <q-btn flat color="white" label="#pop" class="text-lowercase text-h6" />
+  <q-toolbar class="selector-wrapper">
+     <q-btn flat color="white" label="#weird" class="text-lowercase text-h3 text-weight-bolder" />
+     <q-btn flat color="white" label="#hiphop" class="text-lowercase text-h4 inactive-channel" />
+     <q-btn flat color="white" label="#pop" class="text-lowercase text-h4 inactive-channel" />
   </q-toolbar>
 </template>
+
+<style lang="sass">
+.selector-wrapper
+  position: fixed;
+  left: 20px;
+  z-index: 50;
+.inactive-channel
+  opacity: 0.6;
+</style>
 
 <script>
 export default {
