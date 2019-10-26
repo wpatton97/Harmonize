@@ -1,5 +1,5 @@
 <template>
-  <div>test</div>
+  <div>Channel Selector</div>
 </template>
 
 <script>
