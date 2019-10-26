@@ -15,7 +15,7 @@
   right: 0;
   z-index: 1;
   display: block;
-  background-image: url('http://localhost:8080/statics/lately-ep.jpg');
+  background: url('http://localhost:8080/statics/lately-ep.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -7,8 +7,8 @@
         spinner-color="white"
       />
     </div>
-    <div class="q-pa-sm text-center text-h4">{{ title }}</div>
-    <div class="q-pa-sm text-center text-h6">{{ album }} • {{ artist }}</div>
+    <div class="q-pt-md q-pa-sm text-center text-h4 text-weight-bolder">{{ title }}</div>
+    <div class="text-center text-h6">{{ album }} · {{ artist }}</div>
   </div>
 </template>
 

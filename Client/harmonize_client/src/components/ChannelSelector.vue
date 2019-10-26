@@ -9,6 +9,7 @@
 <style lang="sass">
 .selector-wrapper
   position: fixed;
+  left: 20px;
   z-index: 50;
 .inactive-channel
   opacity: 0.6;
