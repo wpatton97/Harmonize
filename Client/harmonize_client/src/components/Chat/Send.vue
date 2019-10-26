@@ -1,6 +1,6 @@
 <template>
   <div id="send-container">
-    <q-input class="bg-grey" id="Send" label="Message" counter maxlength="12" :dense="dense">
+    <q-input class="bg-grey" id="Send" label="Message" counter maxlength="120">
       <template v-slot:after>
         <q-btn round dense flat icon="send" />
       </template>
