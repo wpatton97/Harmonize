@@ -1,22 +1,24 @@
 <template>
   <div id="message-container">
-    <q-card class="my-card">
-     
-        <q-item-section avatar>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/img/avatar2.jpg">
-          </q-avatar>
-        </q-item-section>
 
-    </q-card>
+
+      <q-item >
+        <q-item-section avatar>
+          <q-avatar rounded color="purple" text-color="white" icon={ {icon} } />
+        </q-item-section>
+            <q-item-section>{message}</q-item-section>
+      </q-item>
   </div>    
 </template>
 
 <style lang="sass">
+#Message
+
 </style>
 
 <script>
 export default {
-  name: 'Message'
+  name: 'Message',
+  props: ["icon", "message"]
 }
 </script>
