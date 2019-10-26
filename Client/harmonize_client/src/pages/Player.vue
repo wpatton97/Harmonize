@@ -8,12 +8,11 @@
             <div class="col-3">         
               <current-player />
             </div>
-            <div class="col q-ml-lg">
-               <span class="text-h5 text-white">Up next...</span>
-               <div class="q-gutter-sm q-mt-md">
-                 <song-art title="Goodie Bag" artist="Still Woozy" album="Goodie Bag" width="200px" image="http://localhost:8080/statics/goodie-bag.jpg"/>
-                 <song-art title="Goodie Bag" artist="Still Woozy" album="Goodie Bag" width="200px" image="http://localhost:8080/statics/goodie-bag.jpg"/>
-               </div>
+            <div class="col q-ml-xl">
+               <span class="text-h5 text-white">Up next...</span>     
+               <q-scroll-area class="q-mt-md" horizontal style="height: 350px;width: 500px;">
+                  <song-art class="float-left" v-for="n in 10" :key="n" title="Goodie Bag" artist="Still Woozy" album="Goodie Bag" width="200px" image="http://localhost:8080/statics/goodie-bag.jpg"/>
+               </q-scroll-area>
             </div>
           </div>
       </div>

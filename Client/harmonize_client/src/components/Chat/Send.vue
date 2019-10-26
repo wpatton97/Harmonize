@@ -1,8 +1,8 @@
 <template>
   <div id="send-container">
-    <q-input class="bg-grey" id="Send" label="Message" counter maxlength="120">
+    <q-input id="Send" label="Message" counter maxlength="120" dark color="white">
       <template v-slot:after>
-        <q-btn round dense flat icon="send" />
+        <q-btn round dense flat icon="send" color="white" />
       </template>
     </q-input>
   </div>
