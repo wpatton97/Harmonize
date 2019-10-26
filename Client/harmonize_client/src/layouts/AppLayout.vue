@@ -6,7 +6,7 @@
     </q-header>
 
     <q-drawer show-if-above v-model="right" side="right" bordered>
-      <!-- drawer content -->
+      <chat />
     </q-drawer>
 
     <q-page-container>
@@ -18,10 +18,11 @@
 
 <script>
 import ChannelSelector from '../components/ChannelSelector';
+import Chat from '../components/Chat/ChatLog';
 
 export default {
   name: 'AppLayout',
-  components: { ChannelSelector },
+  components: { ChannelSelector, Chat },
   data () {
     return {
       leftDrawerOpen: false

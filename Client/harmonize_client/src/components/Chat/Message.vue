@@ -1,5 +1,5 @@
 <template>
-  <div id="chat-container">
+  <div id="message-container">
     Test
   </div>
 </template>
@@ -9,6 +9,6 @@
 
 <script>
 export default {
-  name: 'chat'
+  name: 'Message'
 }
 </script>
