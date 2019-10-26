@@ -1,11 +1,10 @@
 <template>
   <div id="chat-container" class="bg-black text-white">
     <div>
-      <Message />
+      <Message icon="https://i.imgur.com/Ska1zn6.png" message="Yeet the props are doing it" />
     </div>
 
-    
-    <div id="SendMessage"> 
+    <div id="SendMessage">
       <hr />
       <Send />
     </div>
@@ -18,8 +17,8 @@
 #SendMessage
   position: absolute
   bottom: 0
-  width: 100%
-  border-radius: 
+  width: 100% 
+  color: white
 </style>
 
 <script>
