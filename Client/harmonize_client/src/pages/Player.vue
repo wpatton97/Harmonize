@@ -1,27 +1,20 @@
 <template>
   <q-page>
-    <div class="q-pa-md">
-        <div class="row">
-          <div class="col">
-            <channel-selector />
-          </div>
-          <div class="col">
-            <chat />
-          </div>
-        </div>
-    </div>
+    test
   </q-page>
 </template>
 
 <script>
-import ChannelSelector from '../components/ChannelSelector';
-import Chat from '../components/Chat';
+import CurrentPlayer from '../components/playground/CurrentPlayer';
+import Viz from '../components/playground/Viz';
+import Voting from '../components/playground/Voting';
 
 export default {
   name: 'Player',
   components: {
-    ChannelSelector,
-    Chat
+    CurrentPlayer,
+    Viz,
+    Voting
   }
 }
 </script>

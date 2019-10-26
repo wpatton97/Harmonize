@@ -5,8 +5,6 @@
 </template>
 
 <style lang="sass">
-#chat-container
-  background-color: black;
 </style>
 
 <script>
