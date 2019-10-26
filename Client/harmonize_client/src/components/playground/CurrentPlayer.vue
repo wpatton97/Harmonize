@@ -1,6 +1,8 @@
 <template>
   <div class="text-white">
-    <song-art title="Lava" artist="Still Woozy" album="Lately EP" image="http://localhost:8080/statics/lately-ep.jpg"/>
+    <song-art title="Lava" artist="Still Woozy" album="Lately EP" 
+       image="http://localhost:8080/statics/lately-ep.jpg"
+       v-bind:user="{name: 'Goose', avatar: 'https://i.imgur.com/Ska1zn6.png'}"/>
   </div>
 </template>
 

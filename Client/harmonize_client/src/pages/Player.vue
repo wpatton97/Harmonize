@@ -8,11 +8,13 @@
             <div class="col-3">         
               <current-player />
             </div>
-            <div class="col q-ml-xl">
-               <span class="text-h5 text-white">Up next...</span>     
-               <q-scroll-area class="q-mt-md" horizontal style="height: 350px;width: 500px;">
-                  <song-art class="float-left" v-for="n in 10" :key="n" title="Goodie Bag" artist="Still Woozy" album="Goodie Bag" width="200px" image="http://localhost:8080/statics/goodie-bag.jpg"/>
-               </q-scroll-area>
+            <div class="col q-ml-xl" style="overflow-x: scroll;">
+               <span class="text-h5 text-white">Up next...</span> 
+               <div>
+                <song-art class="float-left " v-for="n in 4" :key="n" title="Goodie Bag" artist="Still Woozy" album="Goodie Bag" v-bind:user="{name: 'Goose', avatar: 'https://i.imgur.com/Ska1zn6.png'}" 
+                  width="200px"
+                  image="http://localhost:8080/statics/goodie-bag.jpg"/>
+                  </div>
             </div>
           </div>
       </div>
@@ -25,7 +27,7 @@
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 0;
   display: block;
   background: url('http://localhost:8080/statics/lately-ep.jpg');
   background-position: center;
@@ -35,7 +37,7 @@
   filter: blur(20px) grayscale(100%);
   opacity: 0.7;
 .content
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   z-index: 9999;
