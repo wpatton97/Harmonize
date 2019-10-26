@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'viz',
+  name: 'visualizer',
 
   data () {
     return {
