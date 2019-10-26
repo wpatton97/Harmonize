@@ -1,4 +1,4 @@
-package indexroute
+package index
 
 import (
 	"net/http"
@@ -6,7 +6,7 @@ import (
 
 const staticPath string = "./static/"
 
-func (h http.HandlerFunc) Index(w http.ResponseWriter, r *http.Request) {
+func Index(w http.ResponseWriter, r *http.Request) {
 	fs := http.FileServer(http.Dir(staticPath))
 	fs.ServeHTTP(w, r)
 }
