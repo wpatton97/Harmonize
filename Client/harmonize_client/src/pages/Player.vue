@@ -1,11 +1,16 @@
 <template>
   <q-page>
-    Tet
+    <ChannelSelector />
   </q-page>
 </template>
 
 <script>
+import ChannelSelector from '../components/ChannelSelector';
+
 export default {
-  name: 'PageIndex'
+  name: 'Player',
+  components: {
+    ChannelSelector
+  }
 }
 </script>

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Voting',
+  name: 'voting',
 
   data () {
     return {

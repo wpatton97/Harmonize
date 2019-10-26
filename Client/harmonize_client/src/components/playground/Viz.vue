@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Viz',
+  name: 'viz',
 
   data () {
     return {

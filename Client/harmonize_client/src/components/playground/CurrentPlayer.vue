@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "Playing",
+  name: "current-player",
 
   data() {
     return {
