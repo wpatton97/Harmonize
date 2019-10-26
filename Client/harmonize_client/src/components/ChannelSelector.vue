@@ -10,8 +10,8 @@
 .selector-wrapper
   position: fixed;
   z-index: 50;
-.inactive-channel::before
-  opacity: 0.5;
+.inactive-channel
+  opacity: 0.6;
 </style>
 
 <script>

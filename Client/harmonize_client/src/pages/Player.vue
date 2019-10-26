@@ -3,7 +3,7 @@
     <channel-selector />
     <div class="background-image"></div>
     <div class="content">
-        <current-player />
+      <current-player />
     </div>
   </q-page>
 </template>
@@ -21,13 +21,14 @@
   background-size: cover;
   height: 100%;
   filter: blur(20px)
-  opacity: 0.4;
+  opacity: 0.7;
 .content
   position: fixed;
   left: 0;
   right: 0;
   z-index: 9999;
-  top: 50%;
+  top: 20%;
+  left: 50px;
 </style>
 
 <script>
