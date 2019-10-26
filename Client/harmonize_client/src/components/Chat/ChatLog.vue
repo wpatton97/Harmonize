@@ -3,7 +3,6 @@
     <div>
       <Message icon="https://i.imgur.com/Ska1zn6.png" message="Yeet the props are doing it" />
     </div>
-
     <div id="SendMessage">
       <hr />
       <Send />

@@ -11,7 +11,6 @@
 <style lang="sass">
 #Send
   border-radius: 2em
-
 </style>
 
 <script>
