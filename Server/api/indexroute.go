@@ -1,4 +1,4 @@
-module indexroute
+package indexroute
 
 import (
 	"net/http"

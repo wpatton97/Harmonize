@@ -1,4 +1,4 @@
-module routes
+package routes
 
 import (
 	"api/indexroute"
