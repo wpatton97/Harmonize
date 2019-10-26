@@ -6,13 +6,13 @@
       spinner-color="white"
       v-bind:style="{ width: width }"
     />
-    <div class="text-white q-pt-md q-pa-sm text-center text-h4 text-weight-bolder">{{ title }}</div>
+    <div class="text-white q-pt-md q-pa-sm text-center text-h5 text-weight-bolder">{{ title }}</div>
     <div class="text-white text-center text-h6">{{ album }} · {{ artist }}</div>
     <div class="text-white text-center text-h6">
         <q-avatar size="28px">
           <img v-bind:src="user.avatar">
         </q-avatar>
-        {{ user.name }}
+        <span> {{ user.name }}</span>
     </div>
   </div>
 </template>

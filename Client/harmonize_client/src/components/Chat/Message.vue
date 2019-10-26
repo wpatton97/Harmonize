@@ -2,7 +2,7 @@
   <div id="message-container">
       <q-item >
         <q-item-section avatar>
-          <q-avatar rounded >
+          <q-avatar>
               <img v-bind:src="icon" />
           </q-avatar>
         </q-item-section>
@@ -12,8 +12,6 @@
 </template>
 
 <style lang="sass">
-#Message
-
 </style>
 
 <script>
