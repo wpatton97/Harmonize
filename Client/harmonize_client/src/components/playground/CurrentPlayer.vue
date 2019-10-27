@@ -2,7 +2,7 @@
   <div class="text-white">
     <song-art :title="nowPlaying.Title" :artist="nowPlaying.Author" :album="nowPlaying.Album" 
        :image="base_url + nowPlaying.Art"
-       v-bind:user="{name: nowPlaying.AddedBy.Name, avatar: base_url + nowPlaying.AddedBy.Avatar}"/>
+       v-bind:user="{name: nowPlaying.AddedBy.Name, avatar: nowPlaying.AddedBy.Avatar}"/>
      <div class="text-center">
        <q-btn-group outline>
           <q-btn :ripple="{ color: 'red' }" flat color="white" icon="thumb_down" size="23px"/>
@@ -12,11 +12,30 @@
        </q-btn-group>
       </div>
       <div class="audio-component">
-          <audio ref="player" controls="true" v-bind:src="base_url + nowPlaying.URL" preload="auto"></audio>
+          <av-bars
+            :canv-width="500"
+            :canv-height="300"
+            class="viz"
+            caps-color="#FFF"
+            :bar-color="['#FFF']"
+            canv-fill-color="transparent"
+            :caps-height="5"
+            ref-link="player"
+            controls="false"
+          ></av-bars>
+          <audio ref="player" controls="false" v-bind:src="base_url + nowPlaying.URL" preload="auto" style="display:hidden;"></audio>
       </div>
     </div>
   </div>
 </template>
+
+<style lang="sass">
+.viz
+  position: fixed;
+  bottom: 0;
+  opacity: 0.3;
+  left: 0;
+</style>
 
 <script>
 import { mapState } from 'vuex';
@@ -25,6 +44,7 @@ import AudioVisual from 'vue-audio-visual'
 
 export default {
   name: "current-player",
+  components: { AudioVisual },
   methods: {
       mute(){
         this.$store.dispatch('rest/setPlaying', { playing: !this.$store.state.rest.playing  });
@@ -42,6 +62,8 @@ export default {
 
         var player = this.$refs.player;
 
+        player.crossOrigin = 'anonymous';
+
         setTimeout(function() {
           //your code to be executed after 1 second
           player.currentTime = time + 1.5;
@@ -54,6 +76,8 @@ export default {
       let time = this.$store.state.rest.nowPlaying.Time.Current;
 
       var player = this.$refs.player;
+
+      player.crossOrigin = 'anonymous';
 
       setTimeout(function() {
         //your code to be executed after 1 second

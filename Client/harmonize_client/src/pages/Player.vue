@@ -48,16 +48,12 @@ import { mapState } from 'vuex';
 import ChannelSelector from '../components/ChannelSelector';
 import Candidates from '../components/playground/Candidates';
 import CurrentPlayer from '../components/playground/CurrentPlayer';
-import Visualizer from '../components/playground/Visualizer';
-import Voting from '../components/playground/Voting';
 import SongArt from '../components/playground/SongArt';
 
 export default {
   name: 'Player',
   components: {
     CurrentPlayer,
-    Visualizer,
-    Voting,
     ChannelSelector,
     SongArt,
     Candidates
