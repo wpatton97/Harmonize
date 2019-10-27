@@ -11,13 +11,14 @@ const staticPath string = "./static/"
 func Get(w http.ResponseWriter, r *http.Request) {
 	template := `
 		{
+			"ID": %d,
 			"Song":{
-				"ID": '%d',
+				"ID": %d,
 				"Title": "%s",
 				"Author": "%s",
 				"Album": "%s",
 				"Art": "%s",
-				"Length": '%d'
+				"Length": %d
 			},
 			"Addedby":{
 				"Name": "%s",
@@ -27,10 +28,10 @@ func Get(w http.ResponseWriter, r *http.Request) {
 		}
 	`
 	js := "["
-	for i := 0; i <= 6; i++ {
+	for i := 0; i < 6; i++ {
 		curSong := db.GetRandomSong()
-		js += fmt.Sprintf(template, curSong.ID, curSong.Title, curSong.Author, curSong.Album, curSong.Art, curSong.Length, "xinx", "/userprofiles/xinx.png", "/userprofiles/xinx.png", "/userprofiles/goose.png")
-		if i != 6 {
+		js += fmt.Sprintf(template, i, curSong.ID, curSong.Title, curSong.Author, curSong.Album, curSong.Art, curSong.Length, "xinx", "/userprofiles/xinx.png", "/userprofiles/xinx.png", "/userprofiles/goose.png")
+		if i != 5 {
 			js += ","
 		} else {
 			js += "]"

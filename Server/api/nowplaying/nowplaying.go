@@ -26,12 +26,14 @@ func Get(w http.ResponseWriter, r *http.Request) {
 
 	inStor, exist := channel2nowplaying[channelid]
 	if exist {
-		if inStor.Time.Current > float64(inStor.Time.Length) {
+		log.Printf("Is greater: %v\t%d\t%d", int(inStor.Time.Current) > inStor.Time.Length, int(inStor.Time.Current), inStor.Time.Length)
+		if int(inStor.Time.Current) > inStor.Time.Length {
 			inStor = db.GetNowPlaying(channelid)
 			channel2nowplaying[channelid] = inStor
 			channel2startoffset[channelid] = time.Now()
 		} else {
 			inStor.Time.Current = time.Now().Sub(channel2startoffset[channelid]).Seconds()
+			channel2nowplaying[channelid] = inStor
 		}
 
 	} else {
