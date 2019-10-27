@@ -1,11 +1,10 @@
 <template>
-  <div id="chat-container" class="bg-black text-white">
+  <div id="chat-container" class="bg-black text-white shadow-7">
     <span></span>
     <div id="message-log">
       <Message v-for="n in 25" :key="n" icon="https://i.imgur.com/Ska1zn6.png" message="Yeet the props are doing it" />
     </div>
     <div id="send-message">
-      <hr />
       <Send />
     </div>
   </div>

@@ -1,8 +1,7 @@
 <template>
   <q-toolbar class="selector-wrapper">
      <q-btn flat color="white" label="#weird" class="text-lowercase text-h4 text-weight-bolder" />
-     <q-btn flat color="white" label="#hiphop" class="text-lowercase text-h5 inactive-channel" />
-     <q-btn flat color="white" label="#pop" class="text-lowercase text-h5 inactive-channel" />
+     <q-btn v-for="n in 5" :key="n" flat color="white" label="#hiphop" class="text-lowercase text-h5 inactive-channel" />
   </q-toolbar>
 </template>
 

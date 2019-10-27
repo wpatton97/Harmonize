@@ -8,13 +8,13 @@
             <div class="col-3">         
               <current-player />
             </div>
-            <div class="col q-ml-xl" style="overflow-x: scroll;">
+            <div class="col q-ml-xl">
                <span class="text-h5 text-white">Up next...</span> 
                <div>
                 <song-art class="float-left " v-for="n in 4" :key="n" title="Goodie Bag" artist="Still Woozy" album="Goodie Bag" v-bind:user="{name: 'Goose', avatar: 'https://i.imgur.com/Ska1zn6.png'}" 
                   width="200px"
                   image="http://localhost:8080/statics/goodie-bag.jpg"/>
-                  </div>
+               </div>
             </div>
           </div>
       </div>
@@ -27,6 +27,7 @@
   position: fixed;
   left: 0;
   right: 0;
+  bottom: 0;
   z-index: 0;
   display: block;
   background: url('http://localhost:8080/statics/lately-ep.jpg');
@@ -40,9 +41,11 @@
   position: absolute;
   left: 0;
   right: 0;
+  bottom: 0;
   z-index: 9999;
   top: 20%;
-  left: 50px;
+  padding-left: 50px;
+  right: 400px;
 </style>
 
 <script>
