@@ -18,3 +18,4 @@ func CreateDatabase()(*sql.DB, error){
 	}
 	return db, nil
 }
+
