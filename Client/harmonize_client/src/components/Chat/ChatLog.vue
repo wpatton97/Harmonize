@@ -17,7 +17,7 @@
   position: absolute
   bottom: 0
   width: 100% 
-  color: white
+  padding: .75em
 #message-log
   height: 90%
   overflow: scroll
