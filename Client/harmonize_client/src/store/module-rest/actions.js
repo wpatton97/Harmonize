@@ -1,5 +1,5 @@
 import axios from 'axios'
-import config from '../../../config';
+import config from '../../../config'
 
 export function fetchChannels ({ commit }) {
     axios.get(config.API_URL + 'channels', { crossdomain: true })
@@ -35,6 +35,10 @@ export function updateActiveChannel ({ commit }, payload) {
       }})
         .then(r => r.data)
         .then(response => {
-            console.log(response);
+            console.log(response)
         })
+}
+
+export function setPlaying({commit}, payload) {
+    commit('SET_PLAYING', payload.playing);
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="text-h5 text-white">Up next...</span> 
-        <q-btn flat color="grey" icon="add_circle_outline" size="23px" id="AddSong" />
+        <q-btn flat color="grey" icon="add_circle_outline" size="23px" id="AddSong" @click="add" />
         <div>
             <song-art class="candidate-art float-left" v-for="candidate in candidates" :key="candidate.Song.ID" :title="candidate.Song.Title" :artist="candidate.Song.Author" :album="candidate.Song.Album" v-bind:user="{name: candidate.Addedby.Name, avatar: candidate.Addedby.Avatar}" 
                  width="200px"
@@ -25,6 +25,11 @@ import SongArt from './SongArt';
 
 export default {
   name: "candidates",
+  methods: {
+    add() {
+      alert('Pick a song')
+    }
+  },
   watch: {
      $route (to, from){
        // TODO: since we'll be doing a repeat either way, this doesn't matter as much
