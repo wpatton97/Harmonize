@@ -133,26 +133,7 @@ func GetChannel() []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
-	rows, err := db.Query("SELECT * FROM Channel")
-	checkerr(err)
-	for rows.Next() {
-		channel := models.ChannelModel{}
-		err = rows.Scan(&channel.ID, &channel.Name)
-		if !checkerr(err) {
-			continue
-		}
-		channels = append(channels, channel)
-	}
-	db.Close()
-	return channels
-}
-
-//gets all channels that contain searchterm
-func GetChannelLike(searchterm string) []models.ChannelModel {
-	var channels []models.ChannelModel
-	db, err := CreateDatabase()
-	checkerr(err)
-	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Channel WHERE Name LIKE '%%%s%%' ", searchterm))
+	rows, err := db.Query("SELECT * FROM Channels")
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
