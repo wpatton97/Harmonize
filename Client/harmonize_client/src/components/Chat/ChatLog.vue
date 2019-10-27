@@ -13,6 +13,7 @@
 <style lang="sass">
 #chat-container
   height: 100%
+  
 #send-message
   position: absolute
   bottom: 0
@@ -20,7 +21,7 @@
   padding: .75em
 #message-log
   height: 90%
-  overflow: scroll
+  overflow-y: scroll
 </style>
 
 <script>
