@@ -11,7 +11,7 @@
        </q-btn-group>
       </div>
       <div class="audio-component">
-          <audio controls="true" src="https://www.mfiles.co.uk/mp3-downloads/grieg-holberg-suite-3-gavotte.mp3"></audio>
+          <audio ref="player" controls="true" v-bind:src="nowPlaying.URL"></audio>
       </div>
   </div>
 </template>
@@ -31,6 +31,9 @@ export default {
   },
   mounted () {
       this.$store.dispatch('rest/fetchNowPlaying', { channelID: this.$route.params.channelID });
+
+console.log(this.$store.state.rest.nowPlaying.Time.CurrentTime);
+      this.$refs.player.currentTime = this.$store.state.rest.nowPlaying.Time.CurrentTime;
   },
   computed: mapState('rest', {
       nowPlaying: state => state.nowPlaying

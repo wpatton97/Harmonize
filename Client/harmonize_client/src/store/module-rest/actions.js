@@ -24,7 +24,6 @@ export function fetchCandidates ({ commit }, payload) {
         { crossdomain: true, params: { channel: payload.channelID } })
         .then(r => r.data)
         .then(response => {
-            console.log(response);
             commit('SET_CANDIDATES', response);
         })
 }
@@ -35,7 +34,6 @@ export function updateActiveChannel ({ commit }, payload) {
       }})
         .then(r => r.data)
         .then(response => {
-            console.log(response)
         })
 }
 

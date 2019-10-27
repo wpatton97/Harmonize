@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import AudioVisual from 'vue-audio-visual'
 import routes from './routes'
 
 Vue.use(VueRouter)
-Vue.use(AudioVisual)
 
 /*
  * If not building with SSR mode, you can
