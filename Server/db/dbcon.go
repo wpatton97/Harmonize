@@ -147,6 +147,25 @@ func GetChannel() []models.ChannelModel {
 	return channels
 }
 
+//gets all channels that contain searchterm
+func GetChannelLike(searchterm string) []models.ChannelModel {
+	var channels []models.ChannelModel
+	db, err := CreateDatabase()
+	checkerr(err)
+	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Channels WHERE Name LIKE '%%%s%%' ", searchterm))
+	checkerr(err)
+	for rows.Next() {
+		channel := models.ChannelModel{}
+		err = rows.Scan(&channel.ID, &channel.Name)
+		if !checkerr(err) {
+			continue
+		}
+		channels = append(channels, channel)
+	}
+	db.Close()
+	return channels
+}
+
 //get all users votes
 func GetUserVotes() []models.UserVotes {
 	var uservotes []models.UserVotes
@@ -183,4 +202,42 @@ func GetUserVotesLikes(searchterm int) []models.UserVotes {
 	}
 	db.Close()
 	return uservotes
+}
+
+//gets all Votes
+func GetVotes() []models.Votes {
+	var votes []models.Votes
+	db, err := CreateDatabase()
+	checkerr(err)
+	rows, err := db.Query("SELECT * FROM Votes")
+	checkerr(err)
+	for rows.Next() {
+		vote := models.Votes{}
+		err = rows.Scan(&vote.ID, &vote.SongID, &vote.ChannelID, &vote.Votes, &vote.Completed, &vote.DateTime, &vote.InitiatedUser)
+		if !checkerr(err) {
+			continue
+		}
+		votes = append(votes, vote)
+	}
+	db.Close()
+	return votes
+}
+
+//get all votes contained in searchterm
+func GetVotesLike(searchterm int) []models.Votes {
+	var votes []models.Votes
+	db, err := CreateDatabase()
+	checkerr(err)
+	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Votes WHERE ID LIKE '%%%d%%'", searchterm))
+	checkerr(err)
+	for rows.Next() {
+		vote := models.Votes{}
+		err = rows.Scan(&vote.ID, &vote.SongID, &vote.ChannelID, &vote.Votes, &vote.Completed, &vote.DateTime, &vote.InitiatedUser)
+		if !checkerr(err) {
+			continue
+		}
+		votes = append(votes, vote)
+	}
+	db.Close()
+	return votes
 }
