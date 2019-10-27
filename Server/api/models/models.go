@@ -37,7 +37,15 @@ type UserVotes struct {
 	DateTime time.Time
 }
 
-
+type Votes struct {
+	ID            int
+	SongID        int
+	ChannelID     int
+	Votes         int
+	Completed     int
+	DateTime      time.Time
+	InitiatedUser int
+}
 
 func Get(w http.ResponseWriter, r *http.Request) {
 

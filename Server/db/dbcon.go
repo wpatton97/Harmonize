@@ -84,8 +84,6 @@ func GetSongsLike(searchterm string) []models.SongModel {
 	db.Close()
 	return songs
 }
-<<<<<<< HEAD
-=======
 
 // gets all users in db
 func GetUsers() []models.UserModel {
@@ -135,7 +133,7 @@ func GetChannel() []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
-	rows, err := db.query("SELECT * FROM Channel")
+	rows, err := db.query("SELECT * FROM Channels")
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -154,7 +152,7 @@ func GetChannelLike(searchterm string) []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
-	rows, err := db.query(fmt.Sprintf("SELECT * FROM Channel WHERE Name LIKE '%%%s%%' ", searchterm))
+	rows, err := db.query(fmt.Sprintf("SELECT * FROM Channels WHERE Name LIKE '%%%s%%' ", searchterm))
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -188,7 +186,7 @@ func GetUserVotes() []models.UserVotes {
 }
 
 //gets all users votes contained in searchterm
-func GetUserVotesLikes(searchterm int) []models.uservotes {
+func GetUserVotesLikes(searchterm int) []models.UserVotes {
 	var uservotes []models.UserVotes
 	db, err := CreateDatabase()
 	checkerr(err)
@@ -205,4 +203,41 @@ func GetUserVotesLikes(searchterm int) []models.uservotes {
 	db.Close()
 	return uservotes
 }
->>>>>>> burkedev
+
+//gets all Votes
+func GetVotes() []models.Votes {
+	var votes []models.Votes
+	db, err := CreateDatabase()
+	checkerr(err)
+	rows, err := db.query("SELECT * FROM Votes")
+	checkerr(err)
+	for rows.Next() {
+		vote = models.Votes{}
+		err = rows.Scan(&vote.ID, &vote.SongID, &vote.ChannelID, &vote.Votes, &vote.Completed, &vote.DateTime, &vote.InitiatedUser)
+		if !checkerr(err) {
+			continue
+		}
+		votes = append(votes, vote)
+	}
+	db.Close()
+	return votes
+}
+
+//get all votes contained in searchterm
+func GetVotesLike(searchterm int) []models.Votes {
+	var votes []models.Votes
+	db, err := CreateDatabase()
+	checkerr(err)
+	rows, err := db.query(fmt.Sprintf("SELECT * FROM Votes WHERE ID LIKE '%%%d%%'", searchterm))
+	checkerr(err)
+	for rows.Next() {
+		vote = models.Votes{}
+		err = rows.Scan(&vote.ID, &vote.SongID, &vote.ChannelID, &vote.Votes, &vote.Completed, &vote.DateTime, &vote.InitiatedUser)
+		if !checkerr(err) {
+			continue
+		}
+		votes = append(votes, vote)
+	}
+	db.Close()
+	return votes
+}
