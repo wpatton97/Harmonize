@@ -10,7 +10,7 @@
     <div class="text-white text-center text-h6">{{ album }} · {{ artist }}</div>
     <div class="text-white text-center text-h6">
         <q-avatar size="28px">
-          <img v-bind:src="user.avatar">
+          <img v-bind:src="base_url + user.avatar">
         </q-avatar>
         <span> {{ user.name }}</span>
     </div>
@@ -21,8 +21,13 @@
 </style>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: "song-art",
-  props: ["width", "title", "artist", "album", "image", "user"]
+  props: ["width", "title", "artist", "album", "image", "user"],
+  computed: mapState('rest', {
+      base_url: state => state.base_url
+  })
 };
 </script>

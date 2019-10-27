@@ -12,7 +12,7 @@
        </q-btn-group>
       </div>
       <div class="audio-component">
-          <audio ref="player" controls="true" v-bind:src="base_url + nowPlaying.URL"></audio>
+          <audio ref="player" controls="true" v-bind:src="base_url + nowPlaying.URL" preload="auto" autoplay></audio>
       </div>
     </div>
   </div>
@@ -37,7 +37,6 @@ export default {
         let time = this.$store.state.rest.nowPlaying.Time.Current;
 
         this.$refs.player.currentTime = time;
-        this.$refs.player.play();
      }
   },
   mounted () {
@@ -45,7 +44,6 @@ export default {
       let time = this.$store.state.rest.nowPlaying.Time.Current;
 
       this.$refs.player.currentTime = time;
-      this.$refs.player.play();
 
       /*this.$refs.player.addEventListener("ended", function(){
           alert("Song ended!");

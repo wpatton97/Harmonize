@@ -1,7 +1,7 @@
 <template>
   <q-page class="bg-black">
     <channel-selector />
-    <div ref="bg" class="background-image"></div>
+    <div ref="bg" class="background-image" v-bind:style="{ 'background-image': 'url(\'' + base_url + nowPlaying.Art + '\')' }"></div>
     <div class="content q-pa-md">
           <div class="row">
           
@@ -62,23 +62,10 @@ export default {
     SongArt,
     Candidates
   }, 
-  created() {
-    this.$store.watch(
-      (state, getters) => getters.status,
-      (newValue, oldValue) => {
-        console.log(`Updating from ${oldValue} to ${newValue}`);
-
-        
-      },
-    );
-  },
   mounted () {
-    console.log("url('" + this.$store.state.rest.base_url + this.$store.state.rest.nowPlaying.Art + "')");
+    //console.log("url('" + this.$store.state.rest.base_url + this.$store.state.rest.nowPlaying.Art + "')");
 
-    this.$refs.bg.style.backgroundImage = "url('" + this.$store.state.rest.base_url + this.$store.state.rest.nowPlaying.Art + "')";
-  },
-  data() {
-    return { test: "shit" }
+    //this.$refs.bg.style.backgroundImage = "url('" + this.$store.state.rest.base_url + this.$store.state.rest.nowPlaying.Art + "')";
   },
   computed: mapState('rest', {
       nowPlaying: state => state.nowPlaying,
