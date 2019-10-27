@@ -4,7 +4,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/AppLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Player.vue') }
+      { path: '/channel/:channelID', name: 'channel', component: () => import('pages/Player.vue') }
     ]
   }
 ]

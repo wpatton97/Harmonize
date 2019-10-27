@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-drawer show-if-above v-model="right" side="right" width="400px">
+    <q-drawer show-if-above side="right" width="400">
       <chat-log />
     </q-drawer>
 
