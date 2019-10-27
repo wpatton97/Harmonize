@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-drawer show-if-above side="right">
+    <q-drawer show-if-above side="right" width="350">
       <chat-log />
     </q-drawer>
     <q-page-container>

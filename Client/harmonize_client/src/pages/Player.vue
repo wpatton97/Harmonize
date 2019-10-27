@@ -3,6 +3,7 @@
     <channel-selector />
     <transition
       appear
+      :duration="250"
       enter-active-class="animated fadeIn"
       leave-active-class="animated fadeOut"
     >

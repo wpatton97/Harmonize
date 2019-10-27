@@ -2,12 +2,17 @@
   <div class="col q-ml-xl">
     <span class="text-h5 text-white">Up next...</span> 
         <div>
-            <song-art class="float-left " v-for="candidate in candidates" :key="candidate.Song.ID" :title="candidate.Song.Title" :artist="candidate.Song.Author" :album="candidate.Song.Album" v-bind:user="{name: candidate.Addedby.Name, avatar: candidate.Addedby.Avatar}" 
+            <song-art class="candidate-art float-left" v-for="candidate in candidates" :key="candidate.Song.ID" :title="candidate.Song.Title" :artist="candidate.Song.Author" :album="candidate.Song.Album" v-bind:user="{name: candidate.Addedby.Name, avatar: candidate.Addedby.Avatar}" 
                  width="200px"
                  :image="candidate.Song.Art"/>
         </div>
    </div>
 </template>
+
+<style lang="sass">
+.candidate-art:hover .song-art
+    border: 45x solid red;
+</style>
 
 <script>
 import { mapState } from 'vuex';
