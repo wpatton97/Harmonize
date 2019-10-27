@@ -31,7 +31,7 @@ function updateScroll() {
   var element = document.getElementById("message-log");
   element.scrollTop = element.scrollHeight;
 }
-setInterval(updateScroll, 1000);
+setInterval(updateScroll, 5000);
 
 export default {
   name: "chat-log",
