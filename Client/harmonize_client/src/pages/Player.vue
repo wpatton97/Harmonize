@@ -15,7 +15,9 @@
             <div class="col-3">         
               <current-player />
             </div>
-            <candidates />
+            <div class="col q-ml-xl">
+              <candidates />
+            </div>
           </div>
       </div>
     </div>

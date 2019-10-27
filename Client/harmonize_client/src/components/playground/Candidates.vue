@@ -1,5 +1,5 @@
 <template>
-  <div class="col q-ml-xl">
+  <div>
     <span class="text-h5 text-white">Up next...</span> 
         <div>
             <song-art class="candidate-art float-left" v-for="candidate in candidates" :key="candidate.Song.ID" :title="candidate.Song.Title" :artist="candidate.Song.Author" :album="candidate.Song.Album" v-bind:user="{name: candidate.Addedby.Name, avatar: candidate.Addedby.Avatar}" 

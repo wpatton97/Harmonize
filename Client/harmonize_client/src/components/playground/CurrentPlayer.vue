@@ -3,6 +3,13 @@
     <song-art :title="nowPlaying.Title" :artist="nowPlaying.Author" :album="nowPlaying.Album" 
        :image="nowPlaying.Art"
        v-bind:user="{name: nowPlaying.Addedby.Name, avatar: nowPlaying.Addedby.Avatar}"/>
+     <div class="text-center">
+       <q-btn-group outline>
+          <q-btn flat color="white" icon="thumb_down" size="23px"/>
+          <q-btn flat color="white" icon="pause_circle_outline" size="45px"/>
+          <q-btn flat color="white" icon="thumb_up" size="23px"/>
+       </q-btn-group>
+      </div>
   </div>
 </template>
 
