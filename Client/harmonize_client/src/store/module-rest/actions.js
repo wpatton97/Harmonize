@@ -18,6 +18,16 @@ export function fetchNowPlaying ({ commit }, payload) {
             commit('SET_NOW_PLAYING', response);
         })
 }
+
+export function fetchCandidates ({ commit }, payload) {
+    axios.get(config.API_URL + 'candidates',
+        { crossdomain: true, params: { channel: payload.channelID } })
+        .then(r => r.data)
+        .then(response => {
+            console.log(response);
+            commit('SET_CANDIDATES', response);
+        })
+}
  
 export function updateActiveChannel ({ commit }, payload) {
     console.log('updating active channel');
