@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"hackathon/db"
 	"hackathon/routes"
 	"log"
 	"net/http"
@@ -14,12 +13,22 @@ const port = 8080
 
 func main() {
 	router := mux.NewRouter()
-	routes := routes.Routes()
-	for path, handler := range routes {
-		router.HandleFunc(path, handler)
+	api := router.PathPrefix("/api").Subrouter()
+
+	GETroutes := routes.GETRoutes()
+	for path, handler := range GETroutes {
+		api.HandleFunc(path, handler).Methods("GET")
 	}
-	log.Printf("%v", db.GetSongsLike("Interlude"))
-	log.Printf("Listening on port: %d", 8080)
+
+	POSTroutes := routes.POSTRoutes()
+	for path, handler := range POSTroutes {
+		api.HandleFunc(path, handler).Methods("POST")
+	}
+
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
+
+	log.Printf("Listening on port: %d", port)
+
 	http.ListenAndServe(fmt.Sprintf(":%d", port), router)
 
 }

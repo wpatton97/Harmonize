@@ -133,7 +133,11 @@ func GetChannel() []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
+<<<<<<< HEAD
 	rows, err := db.Query("SELECT * FROM Channel")
+=======
+	rows, err := db.Query("SELECT * FROM Channels")
+>>>>>>> willdev
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -152,7 +156,11 @@ func GetChannelLike(searchterm string) []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
+<<<<<<< HEAD
 	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Channel WHERE Name LIKE '%%%s%%' ", searchterm))
+=======
+	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Channels WHERE Name LIKE '%%%s%%' ", searchterm))
+>>>>>>> willdev
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -209,10 +217,10 @@ func GetVotes() []models.Votes {
 	var votes []models.Votes
 	db, err := CreateDatabase()
 	checkerr(err)
-	rows, err := db.query("SELECT * FROM Votes")
+	rows, err := db.Query("SELECT * FROM Votes")
 	checkerr(err)
 	for rows.Next() {
-		vote = models.Votes{}
+		vote := models.Votes{}
 		err = rows.Scan(&vote.ID, &vote.SongID, &vote.ChannelID, &vote.Votes, &vote.Completed, &vote.DateTime, &vote.InitiatedUser)
 		if !checkerr(err) {
 			continue
@@ -228,10 +236,10 @@ func GetVotesLike(searchterm int) []models.Votes {
 	var votes []models.Votes
 	db, err := CreateDatabase()
 	checkerr(err)
-	rows, err := db.query(fmt.Sprintf("SELECT * FROM Votes WHERE ID LIKE '%%%d%%'", searchterm))
+	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Votes WHERE ID LIKE '%%%d%%'", searchterm))
 	checkerr(err)
 	for rows.Next() {
-		vote = models.Votes{}
+		vote := models.Votes{}
 		err = rows.Scan(&vote.ID, &vote.SongID, &vote.ChannelID, &vote.Votes, &vote.Completed, &vote.DateTime, &vote.InitiatedUser)
 		if !checkerr(err) {
 			continue
