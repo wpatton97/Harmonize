@@ -1,6 +1,6 @@
 <template>
   <q-toolbar class="selector-wrapper">
-     <q-btn v-for="channel in channels" :key="channel.ID" v-bind:to="'channel/' + channel.ID" flat color="white" v-bind:label="'#' + channel.Name" class="text-lowercase text-h5" v-bind:class="{ inactive: channel.ID !== $route.params.channelID }"/>
+     <q-btn v-for="channel in channels" :key="channel.ID" v-bind:class="{ inactive: channel.ID !== $route.params.channelID }" v-bind:to="'/channel/' + channel.ID" flat color="white" v-bind:label="'#' + channel.Name" class="text-lowercase text-h5" />
   </q-toolbar>
 </template>
 
@@ -19,10 +19,11 @@ import { mapState } from 'vuex'
 export default {
   name: 'channel-selector',
   mounted () {
-       this.$store.dispatch('fetchChannels')
+      //this.$store.dispatch('rest/fetchChannels')
   },
   computed: mapState('rest', {
       channels: state => state.channels
-  })
+  }),
+  props: [ 'channelID' ]
 }
 </script>

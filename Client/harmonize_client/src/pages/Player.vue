@@ -45,7 +45,7 @@
   z-index: 9999;
   top: 20%;
   padding-left: 50px;
-  right: 400px;
+  right: 10%;
 </style>
 
 <script>

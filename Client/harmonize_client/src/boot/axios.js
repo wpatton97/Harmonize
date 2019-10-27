@@ -1,11 +1,7 @@
 import Vue from "vue";
 import axios from "axios";
 
-import config from "../../config";
-
-var axiosInstance = axios.create({
-  baseURL: config.API_URL
-});
+var axiosInstance = axios.create();
 
 axios.interceptors.request.use(request => {
   return request;

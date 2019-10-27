@@ -7,10 +7,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import SongArt from './SongArt';
 
 export default {
   name: "current-player",
-  components: { SongArt }
+  mounted () {
+      this.$store.dispatch('rest/fetchNowPlaying', { channelID: 1 });
+  },
+  computed: mapState('rest', {
+      nowPlaying: state => state.nowPlaying
+  }),
+  components: { SongArt },
+  props: [ 'channelID' ]
 };
 </script>
