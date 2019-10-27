@@ -84,8 +84,6 @@ func GetSongsLike(searchterm string) []models.SongModel {
 	db.Close()
 	return songs
 }
-<<<<<<< HEAD
-=======
 
 // gets all users in db
 func GetUsers() []models.UserModel {
@@ -135,7 +133,7 @@ func GetChannel() []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
-	rows, err := db.query("SELECT * FROM Channel")
+	rows, err := db.Query("SELECT * FROM Channel")
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -154,7 +152,7 @@ func GetChannelLike(searchterm string) []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
-	rows, err := db.query(fmt.Sprintf("SELECT * FROM Channel WHERE Name LIKE '%%%s%%' ", searchterm))
+	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Channel WHERE Name LIKE '%%%s%%' ", searchterm))
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -173,7 +171,7 @@ func GetUserVotes() []models.UserVotes {
 	var uservotes []models.UserVotes
 	db, err := CreateDatabase()
 	checkerr(err)
-	rows, err := db.query("SELECT * FROM UserVotes")
+	rows, err := db.Query("SELECT * FROM UserVotes")
 	checkerr(err)
 	for rows.Next() {
 		uservote := models.UserVotes{}
@@ -188,11 +186,11 @@ func GetUserVotes() []models.UserVotes {
 }
 
 //gets all users votes contained in searchterm
-func GetUserVotesLikes(searchterm int) []models.uservotes {
+func GetUserVotesLikes(searchterm int) []models.UserVotes {
 	var uservotes []models.UserVotes
 	db, err := CreateDatabase()
 	checkerr(err)
-	rows, err := db.query(fmt.Sprintf("SELECT * FROM UserVotes WHERE UserID LIKE '%%%d%%'", searchterm))
+	rows, err := db.Query(fmt.Sprintf("SELECT * FROM UserVotes WHERE UserID LIKE '%%%d%%'", searchterm))
 	checkerr(err)
 	for rows.Next() {
 		uservote := models.UserVotes{}
@@ -205,4 +203,3 @@ func GetUserVotesLikes(searchterm int) []models.uservotes {
 	db.Close()
 	return uservotes
 }
->>>>>>> burkedev
