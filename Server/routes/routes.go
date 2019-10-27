@@ -4,22 +4,28 @@ import (
 	"hackathon/api/available"
 	"hackathon/api/channels"
 	"hackathon/api/chat"
-	"hackathon/api/index"
 	"hackathon/api/nowplaying"
 	"hackathon/api/users"
 	"hackathon/api/vote"
 	"net/http"
 )
 
-func Routes() map[string]func(http.ResponseWriter, *http.Request) {
+func GETRoutes() map[string]func(http.ResponseWriter, *http.Request) {
 	allRoutes := make(map[string]func(http.ResponseWriter, *http.Request))
 
-	allRoutes["/"] = index.Index
-	allRoutes["/api/available"] = available.Get
-	allRoutes["/api/channels"] = channels.Get
-	allRoutes["/api/nowplaying"] = nowplaying.Get
-	allRoutes["/api/users"] = users.Get
-	allRoutes["/api/vote"] = vote.Get
-	allRoutes["/api/chat"] = chat.Get
+	allRoutes["/available"] = available.Get
+	allRoutes["/channels"] = channels.Get
+	allRoutes["/nowplaying"] = nowplaying.Get
+	allRoutes["/users"] = users.Get
+	allRoutes["/vote"] = vote.Get
+	allRoutes["/chat"] = chat.Get
+	return allRoutes
+}
+
+func POSTRoutes() map[string]func(http.ResponseWriter, *http.Request) {
+	allRoutes := make(map[string]func(http.ResponseWriter, *http.Request))
+
+	allRoutes["/vote"] = vote.Post
+
 	return allRoutes
 }
