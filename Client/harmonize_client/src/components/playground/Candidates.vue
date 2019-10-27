@@ -1,6 +1,7 @@
 <template>
   <div>
     <span class="text-h5 text-white">Up next...</span> 
+        <q-btn flat color="grey" icon="add_circle_outline" size="23px" id="AddSong" />
         <div>
             <song-art class="candidate-art float-left" v-for="candidate in candidates" :key="candidate.Song.ID" :title="candidate.Song.Title" :artist="candidate.Song.Author" :album="candidate.Song.Album" v-bind:user="{name: candidate.Addedby.Name, avatar: candidate.Addedby.Avatar}" 
                  width="200px"
@@ -10,8 +11,12 @@
 </template>
 
 <style lang="sass">
- .candidate-art:hover
-    border: 15x solid red;
+.candidate-art:hover .song-art
+    border: 45x solid red;
+#AddSong
+  float: right
+#AddSong:hover
+  color: white !important
 </style>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <q-toolbar class="selector-wrapper">
-     <q-btn v-for="channel in channels" :key="channel.ID" v-bind:class="{ inactive: channel.ID !== $route.params.channelID }" v-bind:to="'/channel/' + channel.ID" flat color="white" v-bind:label="'#' + channel.Name" class="text-lowercase text-h5" />
+     <q-btn v-for="channel in channels" :key="channel.ID" v-bind:class="{ inactive: channel.ID !== $route.params.channelID }" v-bind:to="'/channel/' + channel.ID" flat color="white" v-bind:label="'#' + channel.Name" class="text-lowercase text-h5" />  
   </q-toolbar>
 </template>
 
@@ -9,6 +9,7 @@
   position: fixed;
   left: 20px;
   z-index: 50;
+  width: 80%
 .inactive
   opacity: 0.6;
 </style>
