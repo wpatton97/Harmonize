@@ -2,6 +2,7 @@ package routes
 
 import (
 	"hackathon/api/available"
+	"hackathon/api/candidates"
 	"hackathon/api/channels"
 	"hackathon/api/chat"
 	"hackathon/api/nowplaying"
@@ -19,6 +20,7 @@ func GETRoutes() map[string]func(http.ResponseWriter, *http.Request) {
 	allRoutes["/users"] = users.Get
 	allRoutes["/vote"] = vote.Get
 	allRoutes["/chat"] = chat.Get
+	allRoutes["/candidates"] = candidates.Get
 	return allRoutes
 }
 
