@@ -1,7 +1,7 @@
 <template>
   <q-page class="bg-black">
     <channel-selector />
-    <div class="background-image"></div>
+    <div class="background-image" v-bind:style="{ backgroundImage: 'url(' + nowPlaying.Art + ')' }"></div>
     <div class="content">
       <div class="q-pa-md">
           <div class="row">
@@ -30,7 +30,6 @@
   bottom: 0;
   z-index: 0;
   display: block;
-  background: url('http://localhost:8080/statics/lately-ep.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -49,6 +48,8 @@
 </style>
 
 <script>
+import { mapState } from 'vuex';
+
 import ChannelSelector from '../components/ChannelSelector';
 import CurrentPlayer from '../components/playground/CurrentPlayer';
 import Visualizer from '../components/playground/Visualizer';
@@ -63,6 +64,12 @@ export default {
     Voting,
     ChannelSelector,
     SongArt
-  }
+  },
+  mounted () {
+      this.$store.dispatch('rest/fetchNowPlaying', { channelID: this.$route.params.channelID });
+  },
+  computed: mapState('rest', {
+      nowPlaying: state => state.nowPlaying
+  })
 }
 </script>

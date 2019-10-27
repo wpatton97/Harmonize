@@ -19,7 +19,14 @@ import { mapState } from 'vuex'
 export default {
   name: 'channel-selector',
   mounted () {
-      //this.$store.dispatch('rest/fetchChannels')
+      this.$store.dispatch('rest/fetchChannels')
+  },
+  watch: {
+     $route (to, from){
+        // Let the server know that we switched channels because apparently one end points isn't good enough for Will
+        // to let the server know. 
+        this.$store.dispatch('rest/updateActiveChannel', { channelID: to.params.channelID });
+     }
   },
   computed: mapState('rest', {
       channels: state => state.channels

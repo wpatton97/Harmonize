@@ -1,8 +1,8 @@
 <template>
   <div class="text-white">
-    <song-art title="Lava" artist="Still Woozy" album="Lately EP" 
-       image="http://localhost:8080/statics/lately-ep.jpg"
-       v-bind:user="{name: 'Goose', avatar: 'https://i.imgur.com/Ska1zn6.png'}"/>
+    <song-art :title="nowPlaying.Title" :artist="nowPlaying.Author" :album="nowPlaying.Album" 
+       :image="nowPlaying.Art"
+       v-bind:user="{name: nowPlaying.Addedby.Name, avatar: nowPlaying.Addedby.Avatar}"/>
   </div>
 </template>
 
@@ -12,8 +12,11 @@ import SongArt from './SongArt';
 
 export default {
   name: "current-player",
-  mounted () {
-      this.$store.dispatch('rest/fetchNowPlaying', { channelID: 1 });
+  watch: {
+     $route (to, from){
+       // When we change channels, we need to actually get the information about the current song.
+        this.$store.dispatch('rest/fetchNowPlaying', { channelID: to.params.channelID });
+     }
   },
   computed: mapState('rest', {
       nowPlaying: state => state.nowPlaying

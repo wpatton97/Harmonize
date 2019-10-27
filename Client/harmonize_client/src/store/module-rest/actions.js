@@ -5,12 +5,11 @@ export function fetchChannels ({ commit }) {
     axios.get(config.API_URL + 'channels', { crossdomain: true })
         .then(r => r.data)
         .then(response => {
-            commit('SET_CHANNELS', response.channels);
+            commit('SET_CHANNELS', response);
         })
 }
 
 export function fetchNowPlaying ({ commit }, payload) {
-    console.log('received now playing request for ' + payload.channelID);
     axios.get(config.API_URL + 'nowplaying',
         { crossdomain: true, params: { channel: payload.channelID } })
         .then(r => r.data)
@@ -20,3 +19,13 @@ export function fetchNowPlaying ({ commit }, payload) {
         })
 }
  
+export function updateActiveChannel ({ commit }, payload) {
+    console.log('updating active channel');
+    axios.post(config.API_URL + 'channel', null, { crossdomain: true, params: {
+        join: payload.channelID
+      }})
+        .then(r => r.data)
+        .then(response => {
+            console.log(response);
+        })
+}
