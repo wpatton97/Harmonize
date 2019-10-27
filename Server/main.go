@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -29,6 +30,6 @@ func main() {
 
 	log.Printf("Listening on port: %d", port)
 
-	http.ListenAndServe(fmt.Sprintf(":%d", port), router)
+	http.ListenAndServe(fmt.Sprintf(":%d", port), handlers.CORS()(router))
 
 }
