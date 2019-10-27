@@ -12,9 +12,11 @@ type Votes struct {
 	Song1    int
 	Song2    int
 	Song3    int
+	Song4    int
 	Votes1   int
 	Votes2   int
 	Votes3   int
+	Votes4   int
 	DateTime time.Time
 }
 
