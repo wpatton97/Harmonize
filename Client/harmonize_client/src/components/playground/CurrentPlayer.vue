@@ -24,6 +24,11 @@ import AudioVisual from 'vue-audio-visual'
 
 export default {
   name: "current-player",
+    methods: {
+      mute(){
+        this.$store.dispatch('rest/setPlaying', { playing: !this.$store.state.rest.playing  });
+      }
+  },
   watch: {
      $route (to, from){
        // When we change channels, we need to actually get the information about the current song.
@@ -37,7 +42,8 @@ console.log(this.$store.state.rest.nowPlaying.Time.CurrentTime);
       this.$refs.player.currentTime = this.$store.state.rest.nowPlaying.Time.CurrentTime;
   },
   computed: mapState('rest', {
-      nowPlaying: state => state.nowPlaying
+      nowPlaying: state => state.nowPlaying,
+      playing: state => state.playing 
   }),
   components: { SongArt },
   props: [ 'channelID' ]
