@@ -36,6 +36,8 @@ type UserVotes struct {
 	DateTime time.Time
 }
 
+
+
 func Get(w http.ResponseWriter, r *http.Request) {
 
 	js := "{\"test\":\"Werks\"}"

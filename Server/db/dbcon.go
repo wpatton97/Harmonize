@@ -85,6 +85,7 @@ func GetSongsLike(searchterm string) []models.SongModel {
 	return songs
 }
 
+// gets all users in db
 func GetUsers() []models.UserModel {
 	var users []models.UserModel
 
@@ -106,6 +107,7 @@ func GetUsers() []models.UserModel {
 	return users
 }
 
+//gets all users containing searchterm
 func GetUsersLike(searchterm string) []models.UserModel {
 	var users []models.UserModel
 	db, err := CreateDatabase()
@@ -126,6 +128,7 @@ func GetUsersLike(searchterm string) []models.UserModel {
 	return users
 }
 
+//gets all channels
 func GetChannel() []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
@@ -144,6 +147,7 @@ func GetChannel() []models.ChannelModel {
 	return channels
 }
 
+//gets all channels that contain searchterm
 func GetChannelLike(searchterm string) []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
@@ -162,6 +166,7 @@ func GetChannelLike(searchterm string) []models.ChannelModel {
 	return channels
 }
 
+//get all users votes
 func GetUserVotes() []models.UserVotes {
 	var uservotes []models.UserVotes
 	db, err := CreateDatabase()
@@ -180,6 +185,7 @@ func GetUserVotes() []models.UserVotes {
 	return uservotes
 }
 
+//gets all users votes contained in searchterm
 func GetUserVotesLikes(searchterm int) []models.uservotes {
 	var uservotes []models.UserVotes
 	db, err := CreateDatabase()

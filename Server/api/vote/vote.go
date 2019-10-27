@@ -2,12 +2,12 @@ package vote
 
 import (
 	"net/http"
-	"time"
+	//"time"
 )
 
 const staticPath string = "./static/"
 
-type Votes struct {
+/*type Votes struct {
 	ID       int
 	Song1    int
 	Song2    int
@@ -18,7 +18,7 @@ type Votes struct {
 	Votes3   int
 	Votes4   int
 	DateTime time.Time
-}
+}*/
 
 func Get(w http.ResponseWriter, r *http.Request) {
 
