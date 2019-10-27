@@ -10,8 +10,8 @@
 </template>
 
 <style lang="sass">
-.candidate-art:hover .song-art
-    border: 45x solid red;
+ .candidate-art:hover
+    border: 15x solid red;
 </style>
 
 <script>
@@ -22,8 +22,8 @@ export default {
   name: "candidates",
   watch: {
      $route (to, from){
-       // When we change channels, we need to actually get the information about the current song.
-       
+       // TODO: since we'll be doing a repeat either way, this doesn't matter as much
+       this.$store.dispatch('rest/fetchCandidates', { channelID: this.$route.params.channelID });
      }
   },
   computed: mapState('rest', {
