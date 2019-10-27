@@ -1,6 +1,6 @@
 <template>
   <div id="chat-container" class="bg-black text-white shadow-7">
-    <span></span>
+    <span id="header"> Chat</span>
     <div id="message-log">
       <Message v-for="n in 25" :key="n" icon="https://i.imgur.com/Ska1zn6.png" message="Yeet the props are doing it" />
     </div>
@@ -13,7 +13,6 @@
 <style lang="sass">
 #chat-container
   height: 100%
-  
 #send-message
   position: absolute
   bottom: 0
@@ -22,6 +21,11 @@
 #message-log
   height: 90%
   overflow-y: scroll
+#header
+  display: inline-block
+  height: 42px
+  font-size: x-large
+  margin-left: .5em
 </style>
 
 <script>
