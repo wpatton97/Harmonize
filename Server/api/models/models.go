@@ -21,12 +21,13 @@ type ChannelModel struct {
 }
 
 type SongModel struct {
-	Title  string
-	Author string
-	Album  string
-	Art    string
-	Length int
-	ID     int
+	Title    string
+	Author   string
+	Album    string
+	Art      string
+	Length   int
+	ID       int
+	Location string
 }
 
 func Get(w http.ResponseWriter, r *http.Request) {
