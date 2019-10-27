@@ -5,9 +5,10 @@
        v-bind:user="{name: nowPlaying.Addedby.Name, avatar: nowPlaying.Addedby.Avatar}"/>
      <div class="text-center">
        <q-btn-group outline>
-          <q-btn flat color="white" icon="thumb_down" size="23px"/>
-          <q-btn flat color="white" icon="pause_circle_outline" size="45px"/>
-          <q-btn flat color="white" icon="thumb_up" size="23px"/>
+          <q-btn :ripple="{ color: 'red' }" flat color="white" icon="thumb_down" size="23px"/>
+          <q-btn v-if="playing === true" flat color="white" icon="music_off" @click="mute" size="45px"/>
+          <q-btn v-else flat color="white" icon="music_note" @click="mute" size="45px"/>
+          <q-btn :ripple="{ color: 'green' }" flat class="relative-position" color="white" icon="thumb_up" size="23px"/>
        </q-btn-group>
       </div>
       <div class="audio-component">
