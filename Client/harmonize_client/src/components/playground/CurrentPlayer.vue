@@ -28,13 +28,23 @@ export default {
      $route (to, from){
        // When we change channels, we need to actually get the information about the current song.
         this.$store.dispatch('rest/fetchNowPlaying', { channelID: to.params.channelID });
+        this.$refs.player.currentTime = this.$store.state.rest.nowPlaying.Time.Current;
+     
+        let time = this.$store.state.rest.nowPlaying.Time.Current;
+
+        console.log("time is " + time);
+
+        this.$refs.player.currentTime = time;
      }
   },
   mounted () {
       this.$store.dispatch('rest/fetchNowPlaying', { channelID: this.$route.params.channelID });
 
-console.log(this.$store.state.rest.nowPlaying.Time.CurrentTime);
-      this.$refs.player.currentTime = this.$store.state.rest.nowPlaying.Time.CurrentTime;
+      let time = this.$store.state.rest.nowPlaying.Time.Current;
+
+      console.log("time is " + time);
+
+      this.$refs.player.currentTime = time;
   },
   computed: mapState('rest', {
       nowPlaying: state => state.nowPlaying
