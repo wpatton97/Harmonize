@@ -12,7 +12,7 @@
 
 <style lang="sass">
 .candidate-art:hover .song-art
-    border: 45x solid red;
+    outline: 4px solid #87D37C !important
 #AddSong
   float: right
 #AddSong:hover
