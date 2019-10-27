@@ -25,7 +25,6 @@ func Get(w http.ResponseWriter, r *http.Request) {
 	channelid, _ := strconv.Atoi(keys[0])
 
 	inStor, exist := channel2nowplaying[channelid]
-	log.Println("ITEM PRESENT: ", exist)
 	if exist {
 		if inStor.Time.Current > float64(inStor.Time.Length) {
 			inStor = db.GetNowPlaying(channelid)
@@ -46,5 +45,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Write(data)
 }
