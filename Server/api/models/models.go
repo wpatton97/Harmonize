@@ -2,6 +2,7 @@ package models
 
 import (
 	"net/http"
+	"time"
 )
 
 const staticPath string = "./static/"
@@ -15,9 +16,9 @@ type UserModel struct {
 }
 
 type ChannelModel struct {
-	ID     int
-	Name   string
-	VoteID int
+	ID   int
+	Name string
+	//VoteID int
 }
 
 type SongModel struct {
@@ -29,6 +30,14 @@ type SongModel struct {
 	ID       int
 	Location string
 }
+
+type UserVotes struct {
+	UserID   int
+	VoteID   int
+	DateTime time.Time
+}
+
+
 
 func Get(w http.ResponseWriter, r *http.Request) {
 

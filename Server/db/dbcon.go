@@ -84,3 +84,125 @@ func GetSongsLike(searchterm string) []models.SongModel {
 	db.Close()
 	return songs
 }
+<<<<<<< HEAD
+=======
+
+// gets all users in db
+func GetUsers() []models.UserModel {
+	var users []models.UserModel
+
+	db, err := CreateDatabase()
+	checkerr(err)
+
+	rows, err := db.Query("SELECT * FROM Users")
+	checkerr(err)
+
+	for rows.Next() {
+		user := models.UserModel{}
+		err = rows.Scan(&user.ID, &user.Name, &user.ProfilePicture, &user.Cookie, &user.ActiveChannel)
+		if !checkerr(err) {
+			continue
+		}
+		users = append(users, user)
+	}
+	db.Close()
+	return users
+}
+
+//gets all users containing searchterm
+func GetUsersLike(searchterm string) []models.UserModel {
+	var users []models.UserModel
+	db, err := CreateDatabase()
+	checkerr(err)
+
+	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Users WHERE Name like '%%%s%%'", searchterm))
+	checkerr(err)
+
+	for rows.Next() {
+		user := models.UserModel{}
+		err = rows.Scan(&user.ID, &user.Name, &user.ProfilePicture, &user.Cookie, &user.ActiveChannel)
+		if !checkerr(err) {
+			continue
+		}
+		users = append(users, user)
+	}
+	db.Close()
+	return users
+}
+
+//gets all channels
+func GetChannel() []models.ChannelModel {
+	var channels []models.ChannelModel
+	db, err := CreateDatabase()
+	checkerr(err)
+	rows, err := db.query("SELECT * FROM Channel")
+	checkerr(err)
+	for rows.Next() {
+		channel := models.ChannelModel{}
+		err = rows.Scan(&channel.ID, &channel.Name)
+		if !checkerr(err) {
+			continue
+		}
+		channels = append(channels, channel)
+	}
+	db.Close()
+	return channels
+}
+
+//gets all channels that contain searchterm
+func GetChannelLike(searchterm string) []models.ChannelModel {
+	var channels []models.ChannelModel
+	db, err := CreateDatabase()
+	checkerr(err)
+	rows, err := db.query(fmt.Sprintf("SELECT * FROM Channel WHERE Name LIKE '%%%s%%' ", searchterm))
+	checkerr(err)
+	for rows.Next() {
+		channel := models.ChannelModel{}
+		err = rows.Scan(&channel.ID, &channel.Name)
+		if !checkerr(err) {
+			continue
+		}
+		channels = append(channels, channel)
+	}
+	db.Close()
+	return channels
+}
+
+//get all users votes
+func GetUserVotes() []models.UserVotes {
+	var uservotes []models.UserVotes
+	db, err := CreateDatabase()
+	checkerr(err)
+	rows, err := db.query("SELECT * FROM UserVotes")
+	checkerr(err)
+	for rows.Next() {
+		uservote := models.UserVotes{}
+		err = rows.Scan(&uservote.UserID, &uservote.VoteID, &uservote.DateTime)
+		if !checkerr(err) {
+			continue
+		}
+		uservotes = append(uservotes, uservote)
+	}
+	db.Close()
+	return uservotes
+}
+
+//gets all users votes contained in searchterm
+func GetUserVotesLikes(searchterm int) []models.uservotes {
+	var uservotes []models.UserVotes
+	db, err := CreateDatabase()
+	checkerr(err)
+	rows, err := db.query(fmt.Sprintf("SELECT * FROM UserVotes WHERE UserID LIKE '%%%d%%'", searchterm))
+	checkerr(err)
+	for rows.Next() {
+		uservote := models.UserVotes{}
+		err = rows.Scan(&uservote.UserID, &uservote.VoteID, &uservote.DateTime)
+		if !checkerr(err) {
+			continue
+		}
+		uservotes = append(uservotes, uservote)
+	}
+	db.Close()
+	return uservotes
+}
+>>>>>>> burkedev
