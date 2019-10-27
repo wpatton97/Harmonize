@@ -12,7 +12,7 @@
        </q-btn-group>
       </div>
       <div class="audio-component">
-          <audio ref="player" controls="true" v-bind:src="base_url + nowPlaying.URL" preload="auto" autoplay></audio>
+          <audio ref="player" controls="true" v-bind:src="base_url + nowPlaying.URL" preload="auto"></audio>
       </div>
     </div>
   </div>
@@ -28,6 +28,10 @@ export default {
   methods: {
       mute(){
         this.$store.dispatch('rest/setPlaying', { playing: !this.$store.state.rest.playing  });
+      },
+      audioPlay() {
+        console.log("audio data is loaded");
+        alert("audio loaded and can be played!");
       }
   },
   watch: {
@@ -36,14 +40,26 @@ export default {
         this.$store.dispatch('rest/fetchNowPlaying', { channelID: to.params.channelID });
         let time = this.$store.state.rest.nowPlaying.Time.Current;
 
-        this.$refs.player.currentTime = time;
+        var player = this.$refs.player;
+
+        setTimeout(function() {
+          //your code to be executed after 1 second
+          player.currentTime = time + 1.5;
+          player.play();
+        }, 1500);
      }
   },
   mounted () {
       this.$store.dispatch('rest/fetchNowPlaying', { channelID: this.$route.params.channelID });
       let time = this.$store.state.rest.nowPlaying.Time.Current;
 
-      this.$refs.player.currentTime = time;
+      var player = this.$refs.player;
+
+      setTimeout(function() {
+        //your code to be executed after 1 second
+        player.currentTime = time + 1.5;
+        player.play();
+      }, 1500);
 
       /*this.$refs.player.addEventListener("ended", function(){
           alert("Song ended!");

@@ -2,7 +2,7 @@
   <div id="chat-container" class="bg-black text-white shadow-7">
     <span id="header"> Chat</span>
     <div id="message-log">
-      <Message v-for="n in 25" :key="n" icon="https://i.imgur.com/Ska1zn6.png" message="Yeet the props are doing it" />
+      <Message v-for="n in 4" :key="n" icon="https://i.imgur.com/Ska1zn6.png" message="Good song!" />
     </div>
     <div id="send-message">
       <Send />
