@@ -57,6 +57,54 @@ func GetSongs() []models.SongModel {
 	return songs
 }
 
+// GetRandomSong Exactly what it says
+func GetSongByID(id int) models.SongModel {
+	var songs []models.SongModel
+
+	db, err := CreateDatabase()
+	checkerr(err)
+
+	rows, err := db.Query("SELECT * FROM Songs WHERE ID=%d", id)
+	checkerr(err)
+
+	for rows.Next() {
+		song := models.SongModel{}
+		err = rows.Scan(&song.ID, &song.Title, &song.Author, &song.Album, &song.Art, &song.Length, &song.Location)
+		if !checkerr(err) {
+			continue
+		}
+
+		songs = append(songs, song)
+	}
+
+	db.Close()
+	return songs[0]
+}
+
+// GetRandomSong Exactly what it says
+func GetRandomSong() models.SongModel {
+	var songs []models.SongModel
+
+	db, err := CreateDatabase()
+	checkerr(err)
+
+	rows, err := db.Query("SELECT * FROM Songs ORDER BY RAND() LIMIT 1")
+	checkerr(err)
+
+	for rows.Next() {
+		song := models.SongModel{}
+		err = rows.Scan(&song.ID, &song.Title, &song.Author, &song.Album, &song.Art, &song.Length, &song.Location)
+		if !checkerr(err) {
+			continue
+		}
+
+		songs = append(songs, song)
+	}
+
+	db.Close()
+	return songs[0]
+}
+
 // GetSongsLike Grabs all songs from database LIKE %query%
 func GetSongsLike(searchterm string) []models.SongModel {
 	var songs []models.SongModel
@@ -133,11 +181,7 @@ func GetChannel() []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
-<<<<<<< HEAD
-	rows, err := db.Query("SELECT * FROM Channel")
-=======
 	rows, err := db.Query("SELECT * FROM Channels")
->>>>>>> willdev
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -156,11 +200,7 @@ func GetChannelLike(searchterm string) []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
-<<<<<<< HEAD
-	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Channel WHERE Name LIKE '%%%s%%' ", searchterm))
-=======
 	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Channels WHERE Name LIKE '%%%s%%' ", searchterm))
->>>>>>> willdev
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -248,4 +288,47 @@ func GetVotesLike(searchterm int) []models.Votes {
 	}
 	db.Close()
 	return votes
+}
+
+func GetNowPlaying(channelid int) models.NowPlaying {
+	var Np models.NowPlaying
+
+	var votes []models.Votes
+
+	db, err := CreateDatabase()
+	checkerr(err)
+
+	q := "SELECT * FROM Votes WHERE ChannelID=%d AND Completed=1 ORDER BY DateTime"
+	q = fmt.Sprintf(q, channelid)
+
+	rows, err := db.Query(q)
+	checkerr(err)
+
+	for rows.Next() {
+		var v models.Votes
+		rows.Scan(&v.ID, &v.SongID, &v.ChannelID, &v.Votes, &v.Completed, &v.DateTime, &v.InitiatedUser)
+		votes = append(votes, v)
+	}
+
+	if len(votes) == 0 {
+		song := GetRandomSong()
+		Np.Title = song.Title
+		Np.Author = song.Author
+		Np.Art = song.Art
+		Np.Album = song.Album
+		Np.URL = song.Location
+		Np.Time.Length = song.Length
+		Np.Time.Current = 0
+	} else {
+		song := GetSongByID(votes[0].SongID)
+		Np.Title = song.Title
+		Np.Author = song.Author
+		Np.Art = song.Art
+		Np.Album = song.Album
+		Np.URL = song.Location
+		Np.Time.Length = song.Length
+		Np.Time.Current = 0
+	}
+
+	return Np
 }

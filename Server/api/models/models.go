@@ -47,10 +47,24 @@ type Votes struct {
 	InitiatedUser int
 }
 
+type CurTime struct {
+	Current float64
+	Length  int
+}
+
+type BitchWhoAdded struct {
+	Name   string
+	Avatar string
+}
+
 type NowPlaying struct {
-	voted       Votes
-	Songs       SongModel
-	InitiatedBy UserModel
+	Title   string
+	Author  string
+	Album   string
+	Art     string
+	URL     string
+	Time    CurTime
+	AddedBy BitchWhoAdded
 }
 
 type Candidates struct {
