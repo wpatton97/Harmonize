@@ -1,4 +1,5 @@
 export default {
   channels: [ ],
-  nowPlaying: { Title: "---", Author: "---", Art: "" }
+  candidates: [ ],
+  nowPlaying: { Title: "---", Author: "---", Art: "", Addedby: { Name: "---", Avatar: ""  } }
 }

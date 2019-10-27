@@ -18,6 +18,9 @@ export default {
         this.$store.dispatch('rest/fetchNowPlaying', { channelID: to.params.channelID });
      }
   },
+  mounted () {
+      this.$store.dispatch('rest/fetchNowPlaying', { channelID: this.$route.params.channelID });
+  },
   computed: mapState('rest', {
       nowPlaying: state => state.nowPlaying
   }),

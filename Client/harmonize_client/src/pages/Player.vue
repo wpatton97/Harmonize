@@ -1,21 +1,20 @@
 <template>
   <q-page class="bg-black">
     <channel-selector />
-    <div class="background-image" v-bind:style="{ backgroundImage: 'url(' + nowPlaying.Art + ')' }"></div>
+    <transition
+      appear
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+    >
+      <div class="background-image" v-bind:style="{ backgroundImage: 'url(' + nowPlaying.Art + ')' }"></div>
+    </transition>
     <div class="content">
       <div class="q-pa-md">
           <div class="row">
             <div class="col-3">         
               <current-player />
             </div>
-            <div class="col q-ml-xl">
-               <span class="text-h5 text-white">Up next...</span> 
-               <div>
-                <song-art class="float-left " v-for="n in 4" :key="n" title="Goodie Bag" artist="Still Woozy" album="Goodie Bag" v-bind:user="{name: 'Goose', avatar: 'https://i.imgur.com/Ska1zn6.png'}" 
-                  width="200px"
-                  image="http://localhost:8080/statics/goodie-bag.jpg"/>
-               </div>
-            </div>
+            <candidates />
           </div>
       </div>
     </div>
@@ -51,6 +50,7 @@
 import { mapState } from 'vuex';
 
 import ChannelSelector from '../components/ChannelSelector';
+import Candidates from '../components/playground/Candidates';
 import CurrentPlayer from '../components/playground/CurrentPlayer';
 import Visualizer from '../components/playground/Visualizer';
 import Voting from '../components/playground/Voting';
@@ -63,10 +63,8 @@ export default {
     Visualizer,
     Voting,
     ChannelSelector,
-    SongArt
-  },
-  mounted () {
-      this.$store.dispatch('rest/fetchNowPlaying', { channelID: this.$route.params.channelID });
+    SongArt,
+    Candidates
   },
   computed: mapState('rest', {
       nowPlaying: state => state.nowPlaying

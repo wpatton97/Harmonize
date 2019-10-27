@@ -4,6 +4,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/AppLayout.vue'),
     children: [
+      { path: '', redirect: '/channel/1' }, // Hard-coded default channel
       { path: '/channel/:channelID', props: true, component: () => import('pages/Player.vue') }
     ]
   }
