@@ -30,7 +30,6 @@ export function fetchCandidates ({ commit }, payload) {
 }
  
 export function updateActiveChannel ({ commit }, payload) {
-    console.log('updating active channel');
     axios.post(config.API_URL + 'channel', null, { crossdomain: true, params: {
         join: payload.channelID
       }})
