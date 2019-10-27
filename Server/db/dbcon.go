@@ -133,11 +133,7 @@ func GetChannel() []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
-<<<<<<< HEAD
-	rows, err := db.query("SELECT * FROM Channels")
-=======
 	rows, err := db.Query("SELECT * FROM Channel")
->>>>>>> willdev
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -156,11 +152,7 @@ func GetChannelLike(searchterm string) []models.ChannelModel {
 	var channels []models.ChannelModel
 	db, err := CreateDatabase()
 	checkerr(err)
-<<<<<<< HEAD
-	rows, err := db.query(fmt.Sprintf("SELECT * FROM Channels WHERE Name LIKE '%%%s%%' ", searchterm))
-=======
 	rows, err := db.Query(fmt.Sprintf("SELECT * FROM Channel WHERE Name LIKE '%%%s%%' ", searchterm))
->>>>>>> willdev
 	checkerr(err)
 	for rows.Next() {
 		channel := models.ChannelModel{}
@@ -211,7 +203,6 @@ func GetUserVotesLikes(searchterm int) []models.UserVotes {
 	db.Close()
 	return uservotes
 }
-<<<<<<< HEAD
 
 //gets all Votes
 func GetVotes() []models.Votes {
@@ -250,5 +241,3 @@ func GetVotesLike(searchterm int) []models.Votes {
 	db.Close()
 	return votes
 }
-=======
->>>>>>> willdev

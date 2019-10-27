@@ -2,6 +2,7 @@ package nowplaying
 
 import (
 	"net/http"
+	"hackathon/db"
 )
 
 const staticPath string = "./static/"

@@ -47,6 +47,18 @@ type Votes struct {
 	InitiatedUser int
 }
 
+type NowPlaying struct {
+	voted       Votes
+	Songs       SongModel
+	InitiatedBy UserModel
+}
+
+type Candidates struct {
+	votes Votes
+	songs SongModel
+	users UserModel
+}
+
 func Get(w http.ResponseWriter, r *http.Request) {
 
 	js := "{\"test\":\"Werks\"}"
