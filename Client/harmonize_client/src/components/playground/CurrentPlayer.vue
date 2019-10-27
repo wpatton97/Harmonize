@@ -1,8 +1,8 @@
 <template>
   <div class="text-white">
     <song-art :title="nowPlaying.Title" :artist="nowPlaying.Author" :album="nowPlaying.Album" 
-       :image="nowPlaying.Art"
-       v-bind:user="{name: nowPlaying.Addedby.Name, avatar: nowPlaying.Addedby.Avatar}"/>
+       :image="base_url + nowPlaying.Art"
+       v-bind:user="{name: nowPlaying.AddedBy.Name, avatar: base_url + nowPlaying.AddedBy.Avatar}"/>
      <div class="text-center">
        <q-btn-group outline>
           <q-btn :ripple="{ color: 'red' }" flat color="white" icon="thumb_down" size="23px"/>
@@ -12,8 +12,9 @@
        </q-btn-group>
       </div>
       <div class="audio-component">
-          <audio ref="player" controls="true" v-bind:src="nowPlaying.URL"></audio>
+          <audio ref="player" controls="true" v-bind:src="base_url + nowPlaying.URL"></audio>
       </div>
+    </div>
   </div>
 </template>
 
@@ -24,7 +25,7 @@ import AudioVisual from 'vue-audio-visual'
 
 export default {
   name: "current-player",
-    methods: {
+  methods: {
       mute(){
         this.$store.dispatch('rest/setPlaying', { playing: !this.$store.state.rest.playing  });
       }
@@ -33,27 +34,29 @@ export default {
      $route (to, from){
        // When we change channels, we need to actually get the information about the current song.
         this.$store.dispatch('rest/fetchNowPlaying', { channelID: to.params.channelID });
-        this.$refs.player.currentTime = this.$store.state.rest.nowPlaying.Time.Current;
-     
         let time = this.$store.state.rest.nowPlaying.Time.Current;
 
-        console.log("time is " + time);
-
         this.$refs.player.currentTime = time;
+        this.$refs.player.play();
      }
   },
   mounted () {
       this.$store.dispatch('rest/fetchNowPlaying', { channelID: this.$route.params.channelID });
-
       let time = this.$store.state.rest.nowPlaying.Time.Current;
 
-      console.log("time is " + time);
-
       this.$refs.player.currentTime = time;
+      this.$refs.player.play();
+
+      /*this.$refs.player.addEventListener("ended", function(){
+          alert("Song ended!");
+
+          this.$store.dispatch('rest/fetchNowPlaying', { channelID: this.$route.params.channelID });
+      });*/
   },
   computed: mapState('rest', {
       nowPlaying: state => state.nowPlaying,
-      playing: state => state.playing 
+      playing: state => state.playing,
+      base_url: state => state.base_url
   }),
   components: { SongArt },
   props: [ 'channelID' ]

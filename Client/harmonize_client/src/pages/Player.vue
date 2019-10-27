@@ -1,25 +1,18 @@
 <template>
   <q-page class="bg-black">
     <channel-selector />
-    <transition
-      appear
-      :duration="250"
-      enter-active-class="animated fadeIn"
-      leave-active-class="animated fadeOut"
-    >
-      <div class="background-image" v-bind:style="{ backgroundImage: 'url(' + nowPlaying.Art + ')' }"></div>
-    </transition>
-    <div class="content">
-      <div class="q-pa-md">
+    <div ref="bg" class="background-image"></div>
+    <div class="content q-pa-md">
           <div class="row">
+          
             <div class="col-3">         
               <current-player />
             </div>
+
             <div class="col q-ml-xl">
               <candidates />
             </div>
           </div>
-      </div>
     </div>
   </q-page>
 </template>
@@ -68,9 +61,28 @@ export default {
     ChannelSelector,
     SongArt,
     Candidates
+  }, 
+  created() {
+    this.$store.watch(
+      (state, getters) => getters.status,
+      (newValue, oldValue) => {
+        console.log(`Updating from ${oldValue} to ${newValue}`);
+
+        
+      },
+    );
+  },
+  mounted () {
+    console.log("url('" + this.$store.state.rest.base_url + this.$store.state.rest.nowPlaying.Art + "')");
+
+    this.$refs.bg.style.backgroundImage = "url('" + this.$store.state.rest.base_url + this.$store.state.rest.nowPlaying.Art + "')";
+  },
+  data() {
+    return { test: "shit" }
   },
   computed: mapState('rest', {
-      nowPlaying: state => state.nowPlaying
+      nowPlaying: state => state.nowPlaying,
+      base_url: state => state.base_url
   })
 }
 </script>
