@@ -23,13 +23,15 @@
             ref-link="player"
             controls="false"
           ></av-bars>
-          <audio ref="player" controls="false" v-bind:src="base_url + nowPlaying.URL" preload="auto" style="display:hidden;"></audio>
+          <audio class="player-wrapper" ref="player" controls="false" v-bind:src="base_url + nowPlaying.URL" preload="auto"></audio>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="sass">
+.player-wrapper
+  opacity: 0;
 .viz
   position: fixed;
   bottom: 0;
@@ -48,6 +50,7 @@ export default {
   methods: {
       mute(){
         this.$store.dispatch('rest/setPlaying', { playing: !this.$store.state.rest.playing  });
+        this.$refs.player.muted = this.$store.state.rest.playing;
       },
       audioPlay() {
         console.log("audio data is loaded");

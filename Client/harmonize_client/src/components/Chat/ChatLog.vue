@@ -2,7 +2,9 @@
   <div id="chat-container" class="bg-black text-white shadow-7">
     <span id="header"> Chat</span>
     <div id="message-log">
-      <Message v-for="n in 4" :key="n" icon="https://i.imgur.com/Ska1zn6.png" message="Good song!" />
+      <Message icon="https://i.imgur.com/Ska1zn6.png" author="Goose" message="Good song!" />
+      <Message icon="http://100.79.1.39:8080/userprofiles/xinx.png" author="Xinx" message="I agree that's pretty good" />
+      <Message icon="https://i.imgur.com/Ska1zn6.png" author="Goose" message="vote for mine next please" />
     </div>
     <div id="send-message">
       <Send />
