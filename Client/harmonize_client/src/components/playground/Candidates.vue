@@ -13,6 +13,7 @@
 <style lang="sass">
 .candidate-art:hover .song-art
     outline: 4px solid #87D37C !important
+    cursor: pointer
 #AddSong
   float: right
 #AddSong:hover
