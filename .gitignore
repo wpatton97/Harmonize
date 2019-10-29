@@ -1,3 +1,4 @@
 .DS_Store*
 Server/hackathon
 Server/static/music/*
+Server/nohup.out
